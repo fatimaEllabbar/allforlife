@@ -1,5 +1,4 @@
 
-  
   .post-description-progress2{
     margin-top: 40px ;
     margin-left: 20%;
@@ -7,129 +6,88 @@
     background-image: url('../../images/progressBar2.png');
     background-repeat: no-repeat;
     height: 50px;
-    background-size: contain;
+    background-size: contain;  
+  }
+
+  .container-symptomes{
+    width: 70%;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    border-right: gray solid 2px;
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content:space-around;
+  }
+
+  .symptomes{
+    padding: 0;
+    margin: 5px;
+  
     
   }
+  .symptomes input[type="checkbox"]{
+    height: 50px;
+    width: 30px;
+    background-color:#f5c107;
+  }
+  h5{
+    margin-left: 25px;
+  }
  
-  .description-container{
+  .details-others select {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 90%;
+    height: 50px;
+    color: gray;
+    line-height:3em;
 
-    background-color: white;
-    margin-top: 50px;
-    margin-left:17%;
-    margin-bottom: 80px;
-    width:70%;
-    display: flex;
-    flex-direction: column;
-   
-  }
-
-  .container{
-    display :flex;
-    flex-direction: row;
- 
-  }
-  .problemDescription{
-    width: 30%;
-    display :flex;
-    flex-direction: column;
-  }
-  .description{
-    width: 50%;
-    display :flex;
-    flex-direction: column;
-  }
-  textarea{
-    margin-top: 10px;
-    width: 80%;
-    height: 250px;
-    border: solid 1px gray;
-  }
-  h3{
-    margin-left: 10px;
-    color: #2c385c;
-  }
-  img{
-    margin-top: 10px;
-    width: 80%;
-    height: 230px;
-  }
-
-  p{
-    margin-top: 10px;
-    margin-left: 10% ;
-    width: 60%;
-    letter-spacing: 1px;
-    color:gray;
-
-  }
-  .button-nav{
-   width: 80%;
-    display: flex;
-    justify-content: flex-end;
-    
-  }
-  .button-nav  button{
-  width:130px;
-  font-weight: bold;
-  font-size: 1rem;
-  margin-left: 15px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  height: 40px;
-  background:#f5c107;
-  border:1px solid #f5c107;
-  color:white;
-  border: 1px solid #f5c107;
-  border-radius: 2px;
-  font-family: 'Ubuntu', sans-serif;
-  cursor:pointer;
   }
   
+  
+
+
+ 
+  .button-nav1{
+    width: 95%;
+     display: flex;
+     justify-content: flex-end;
+     
+     
+   }
+   .button-nav1  button{
+   width:130px;
+   font-weight: bold;
+   font-size: 1rem;
+   margin-left: 15px;
+   margin-top: 10px;
+   margin-bottom: 20px;
+   height: 40px;
+   background:#f5c107;
+   border:1px solid #f5c107;
+   color:white;
+   border: 1px solid #f5c107;
+   border-radius: 2px;
+   font-family: 'Ubuntu', sans-serif;
+   cursor:pointer;
+   }
 
 
   /*Media Querie*/
   @media only screen and (max-width : 630px){
-    .post-description-progress1{
-      margin-top: 30px ;
-      margin-left: auto;
-      margin-right: auto;
-      width: 60%;
-      border: solid 2px  #f5c107 ;
-      background-color:  #f5c107;
-      height: 50px;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    span{
-      font-size: 2rem;
-    }
-    .container{
-      display :flex;
-      flex-direction: column;
-    }
-    .button-nav{
-    
-       display: flex;
-       flex-direction: column ; 
-       margin-left: 30%;
-  
-     }
-     .button-nav, .problemDescription, .description {
-      width: 100%;
-    }
 
-
-    .description-container{
-      width: auto;
-      margin-left: 0px;
-    }
-    .post-description-progress{
+    .post-description-progress2{
       display: none;
     }
-    textarea , h3{
-      margin-left: 10%;
+
+    .button-nav1{
+    
+      display: flex;
+      flex-direction: column ; 
+      margin-left: 30%;
+      width: 100%;
+ 
     }
     
   }

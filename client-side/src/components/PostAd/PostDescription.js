@@ -5,6 +5,8 @@ import img from "../../images/Doubt.png"
 
 export default function PostDescription(props) {
 
+
+
     return(
         <div className="post-description-container">
     
@@ -28,8 +30,8 @@ export default function PostDescription(props) {
                         <div className="description">
                             <textarea > </textarea>
                             <div className="button-nav">
-                                <button> {"<"} Back</button>
-                                <button>Next {">"}</button>
+                                <button onClick={()=>props.onBack()}> {"<"} Back</button>
+                                <button onClick={()=> props.onNext("DETAILS")}>Next {">"}</button>
                             </div>
                         </div>
                     </div>

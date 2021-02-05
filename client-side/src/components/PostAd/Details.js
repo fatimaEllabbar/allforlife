@@ -2,7 +2,14 @@
 
 import "./Details.css"
 
-
+const symptomes=["Addiction", "Adoption","Anxiety",
+"Alchol Use","depression", "Chronic illness", "Divorce",
+ "Domestic Abuse","Drug Abuse", "Gambling","Parenting",
+ "Sexual Addiction","Grief" ];
+ const therapy=["Acceptance and Commitment (ACT)","Adlerian","Art Therapy", 
+ "Attachment-based", "Biofeedback", "Coaching"];
+ const insurrance=["1199SEIU","ACI Specialty Benefits", "AMERIGROUP"];
+ const age=["Adolescents/ Teenagers (14 to 19)", "Adults", "children (6 to 10)", "Elders(65+)"]
 
 export default function Details(props) {
 
@@ -17,32 +24,43 @@ export default function Details(props) {
 
                 <div className="description-container">
                     <h3>Details</h3>
-                    <div className="details-symptoms"> 
-                    <h4>SYMPTOMS</h4>
-                    
-                    <div className="container">
-                       
-                        <ul className="ks-cboxtags">
-                                <li>
-                                    <input type="checkbox" id="checkboxOne" value="Rainbow Dash"/>
-                                    <label for="checkboxOne"/>Rainbow Dash
-                                </li>
-                        </ul>
+                    <br/>
+                    <h5>SYMPTOMS</h5> 
+                    <br/>
+                    <div className="container-symptomes">
+                    {symptomes.map((item,index) => {return (
+                        <div key={item.index} className="symptomes">
+                        <input type="checkbox" /> {item} 
+                        </div>
+                    )})}
+                      
                     </div>
                     <div className="details-others">
-
-                    </div>
-
-                        
-                        
-                    <div className="button-nav">
-                            <button> {"<"} Back</button>
-                            <button>Next {">"}</button>
-                    </div>
-                       
-                    
+                        <h5>TYPE OF THERAPY: </h5>
+                        <select >
+                            {therapy.map((item,index) => {return <option key={item.index}> {item} </option>})}
+                        </select>
+                        <h5>ISSURANCE: </h5>
+                        <select >
+                            {insurrance.map((item,index)=> {return <option key={item.index}> {item} </option>})}
+                        </select>
+                        <h5>AGE: </h5>
+                        <select >
+                            {age.map((item,index) => {return <option key={item.index}> {item} </option>})}
+                        </select>
+                        <h5>SEXUALITY: </h5>
+                        <select >
+                            <option>Bisexual</option>
+                            <option>Gay</option>
+                            <option>Lisbian</option>
+                        </select>
+                    </div>                      
+                    <div className="button-nav1">
+                            <button onClick= {()=>props.onBack("DESCRIPTION")}> {"<"} Back</button>
+                            <button onClick= {()=>props.onNext("")}>Next {">"}</button>
+                    </div>      
+               
                 </div>
-            </div>
         </div>
     )
 }
