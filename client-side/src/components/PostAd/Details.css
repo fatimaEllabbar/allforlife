@@ -19,22 +19,80 @@
     flex-wrap: wrap;
     justify-content:space-around;
   }
+  /* css related to the symptomes */
 
-  .symptomes{
-    padding: 0;
-    margin: 5px;
-    
-  }
-  .symptomes button {
-    color :white;
-    font-size: 0.9rem;
-    background-color: #2c385c;
-    border: solid 1px #2c385c;
+  .containerr {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border : solid 2px #4b5779;
     border-radius: 20px;
+    background-color:#4b5779;
+    color : white;
   }
-  .symptomes button:visited{
-    background-color: #5c3f2c;
+  
+
+  .containerr input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height:0;
+    width: 0;
   }
+  .symptomes-text{
+    margin-left: 0;
+    margin-right: 15px;
+  }
+  
+
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color:#4b5779;
+  }
+  
+  .containerr input:checked ~ .checkmark {
+    background-color: #4b5779;
+  }
+  
+  
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  .containerr input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+
+  .containerr .checkmark:after {
+    left: 14px;
+    top: 0px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+
+  /* end of the css related to the checkbox*/
+
   h5{
     margin-left: 25px;
   }
@@ -47,19 +105,12 @@
     color: gray;
     background-color: white;
     line-height:3em;
-
   }
   
-  
-
-
- 
   .button-nav1{
     width: 95%;
-     display: flex;
-     justify-content: flex-end;
-     
-     
+    display: flex;
+    justify-content: flex-end;
    }
    .button-nav1  button{
    width:130px;
@@ -81,18 +132,13 @@
 
   /*Media Querie*/
   @media only screen and (max-width : 630px){
-
     .post-description-progress2{
       display: none;
     }
-
     .button-nav1{
-    
       display: flex;
       flex-direction: column ; 
       margin-left: 30%;
       width: 100%;
- 
-    }
-    
+    }   
   }

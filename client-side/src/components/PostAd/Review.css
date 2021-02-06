@@ -1,0 +1,26 @@
+.review-container{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+.review-container-left{
+    display:flex;
+    flex-direction: column;
+    width: 50%;
+    border-right: solid 2px gray;
+}
+.review-container fieldset{
+    border: none;
+    margin-left: 5%;
+    margin-right: 2%;
+    border-top:#f5c107 solid 2px;
+}
+.symptomesshosen {
+    color :white;
+    font-size: 0.9rem;
+    background-color: #4b5779;
+    border: solid 2px #4b5779;
+    border-radius: 20px;
+    height: 25px;
+    margin: 5px;  
+  }

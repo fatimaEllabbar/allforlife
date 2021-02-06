@@ -69,11 +69,11 @@
 
   .description-container p{
     margin-top: 10px;
-    margin-left:5% ;
+    margin-left:10px ;
     width: 60%;
     letter-spacing: 1px;
     color:gray;
-    text-align: center;
+    text-align:left;
 
   }
   .button-nav{

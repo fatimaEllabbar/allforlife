@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./Details.css"
 
 const symptomes=["Addiction", "Adoption","Anxiety",
@@ -10,6 +11,13 @@ const symptomes=["Addiction", "Adoption","Anxiety",
  const age=["Adolescents/ Teenagers (14 to 19)", "Adults", "children (6 to 10)", "Elders(65+)"]
 
 export default function Details(props) {
+    
+    const [index,setIndex] = useState(-1);
+    function handleClick(pos){
+        console.log(pos)
+             setIndex(pos)
+             console.log(index)
+    }
 
     return(
         <div className="post-description-container">
@@ -26,10 +34,15 @@ export default function Details(props) {
                     <h5>SYMPTOMS</h5> 
                     <br/>
                     <div className="container-symptomes">
+
                     {symptomes.map((item,index) => {return (
-                        <div key={item.index} className="symptomes">
-                        <button>{item}</button>
-                        </div>
+                        
+      
+                        <label key={item.index} class="containerr"><span class="symptomes-text" >{item}</span>
+                        <input type="checkbox" name={item} value={item} />
+                        <span class="checkmark"></span>
+                        </label>
+
                     )})}
                       
                     </div>

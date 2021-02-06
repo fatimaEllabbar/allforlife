@@ -9,17 +9,9 @@ import Review from "./Review";
 import Landing from "./Landing"
 
 
-const LANDING = "LANDING";
-const DESCRIPTION ="DESCRIPTION";
-const DETAILS= "DETAILS";
-const PREFERENCES = "PREFERENCES";
-const BUDGET = "BUDGET";
-const AVAILABILITY = "AVAILABILITY";
-const REVIEW = "REVIEW";
-
 export default function PostAd(props){
 
-     const [mode,setMode]=useState('DESCRIPTION');
+     const [mode,setMode]=useState('DETAILS');
 
      function transition(newMode){
          setMode(newMode)
