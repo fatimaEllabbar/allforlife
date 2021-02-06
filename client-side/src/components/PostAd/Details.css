@@ -23,13 +23,17 @@
   .symptomes{
     padding: 0;
     margin: 5px;
-  
     
   }
-  .symptomes input[type="checkbox"]{
-    height: 50px;
-    width: 30px;
-    background-color:#f5c107;
+  .symptomes button {
+    color :white;
+    font-size: 0.9rem;
+    background-color: #2c385c;
+    border: solid 1px #2c385c;
+    border-radius: 20px;
+  }
+  .symptomes button:visited{
+    background-color: #5c3f2c;
   }
   h5{
     margin-left: 25px;
@@ -41,6 +45,7 @@
     width: 90%;
     height: 50px;
     color: gray;
+    background-color: white;
     line-height:3em;
 
   }

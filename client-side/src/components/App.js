@@ -5,8 +5,8 @@ import Header from "./Header";
 import PostAd from "./PostAd";
 
 
-import Login from "./Login"
-import Register from "./Register";
+import Login from "./costumer/Login"
+import Register from "./costumer/Register";
 
 
 function App() {

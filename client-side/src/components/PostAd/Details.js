@@ -1,5 +1,3 @@
-
-
 import "./Details.css"
 
 const symptomes=["Addiction", "Adoption","Anxiety",
@@ -30,7 +28,7 @@ export default function Details(props) {
                     <div className="container-symptomes">
                     {symptomes.map((item,index) => {return (
                         <div key={item.index} className="symptomes">
-                        <input type="checkbox" /> {item} 
+                        <button>{item}</button>
                         </div>
                     )})}
                       
@@ -38,18 +36,23 @@ export default function Details(props) {
                     <div className="details-others">
                         <h5>TYPE OF THERAPY: </h5>
                         <select >
+                        <option></option>
                             {therapy.map((item,index) => {return <option key={item.index}> {item} </option>})}
                         </select>
                         <h5>ISSURANCE: </h5>
                         <select >
+                        <option></option>
                             {insurrance.map((item,index)=> {return <option key={item.index}> {item} </option>})}
                         </select>
                         <h5>AGE: </h5>
+                        <option></option>
                         <select >
                             {age.map((item,index) => {return <option key={item.index}> {item} </option>})}
                         </select>
                         <h5>SEXUALITY: </h5>
+                        
                         <select >
+                            <option></option>
                             <option>Bisexual</option>
                             <option>Gay</option>
                             <option>Lisbian</option>
@@ -57,7 +60,7 @@ export default function Details(props) {
                     </div>                      
                     <div className="button-nav1">
                             <button onClick= {()=>props.onBack("DESCRIPTION")}> {"<"} Back</button>
-                            <button onClick= {()=>props.onNext("")}>Next {">"}</button>
+                            <button onClick= {()=>props.onNext("PREFERENCES")}>Next {">"}</button>
                     </div>      
                
                 </div>

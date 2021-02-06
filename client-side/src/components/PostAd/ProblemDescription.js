@@ -1,9 +1,9 @@
 
-import "./PostDescription.css"
+import "./ProblemDescription.css"
 import img from "../../images/Doubt.png"
 
 
-export default function PostDescription(props) {
+export default function ProblemDescription(props) {
 
 
 
@@ -18,7 +18,7 @@ export default function PostDescription(props) {
 
                 <div className="description-container">
                     <h3>Problem Description</h3>
-                    <div className="container"> 
+                    <div className="containerDes"> 
                         <div className="problemDescription">
                                 <p>Here you can describe and 
                                     give more details
@@ -30,7 +30,7 @@ export default function PostDescription(props) {
                         <div className="description">
                             <textarea > </textarea>
                             <div className="button-nav">
-                                <button onClick={()=>props.onBack()}> {"<"} Back</button>
+                                <button onClick={()=>props.onBack("LANDING")}> {"<"} Back</button>
                                 <button onClick={()=> props.onNext("DETAILS")}>Next {">"}</button>
                             </div>
                         </div>
