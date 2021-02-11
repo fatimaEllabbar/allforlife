@@ -7,6 +7,7 @@ import PostAd from "./PostAd";
 
 import Login from "./costumer/Login"
 import Register from "./costumer/Register";
+import ProposalAd from "./ProposalAd";
 
 
 function App() {
@@ -16,7 +17,7 @@ const [user,setUser]= useState(null);
   return (
   <>
     <Header />
-    {!user && <PostAd setUser={setUser}/>}
+    {!user && <ProposalAd setUser={setUser}/>}
     {user && <h1>Hi {user.first_name} !</h1>}
     <Footer />
   </> );

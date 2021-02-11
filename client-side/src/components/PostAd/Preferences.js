@@ -1,5 +1,7 @@
 import React from "react";
 
+import Select from "./Select";
+
 import "./Preferences.css";
 
 //Array for countries
@@ -25,26 +27,34 @@ export default function Preferences(props) {
                     <h3>Preferences</h3>
                   </div>           
                 <div className="preference-details">
-                  <h5>LANGUAGE</h5>
-                  <select >
-                    <option></option>
-                    {language.map((item) => {return <option key={item.index}> {item} </option>})}
-                  </select>
-                  <h5>ETHNICITY </h5>
-                  <select >
-                    <option></option>
-                    {ethnicity.map((item)=> {return <option key={item.index}> {item} </option>})}
-                  </select>
-                  <h5>FAITH</h5>
-                  <select >
-                    <option></option>
-                    {faith.map((item) => {return <option key={item.index}> {item} </option>})}
-                  </select>
-                  <h5>COUNTRY</h5>
-                  <select >
-                    <option></option>
-                    {country.map((item) => {return <option key={item.index}> {item} </option>})}
-                  </select>
+                <Select 
+                heading='Language' 
+                listArray={language} 
+                name='language' 
+                {...props} 
+                handleChange={props.handleChange}
+                />
+                <Select 
+                heading='ETHNICITY' 
+                listArray={ethnicity} 
+                name='ethnicity' 
+                {...props} 
+                handleChange={props.handleChange}
+                />
+                <Select 
+                heading='FAITH' 
+                listArray={faith} 
+                name='faith' 
+                {...props} 
+                handleChange={props.handleChange}
+                />
+                <Select 
+                heading='COUNTRY' 
+                listArray={country} 
+                name='country' 
+                {...props} 
+                handleChange={props.handleChange}
+                />
                 </div>                      
                 <div className="button-nav1">
                             <button onClick= {()=>props.onBack("DETAILS")}> {"<"} Back</button>

@@ -1,4 +1,4 @@
-import "./Review.css"
+import "./Review.css";
 
 export default function Review(props) {
     return(
@@ -17,33 +17,57 @@ export default function Review(props) {
                     <div className="review-container-left">
                         <fieldset>
                             <legend>Problem description</legend>
-                            <p> gfhgfgfghhgfhgfhgf bnbb nbvvbn jhgjh
-                                hghjgjh jhgjhg jhgjhgj hjgjhgjh jhjghjghj
-                                hgfhgf jhjgjhg jhgjhg 
-                                hgfhg jhgjg jhgjjg guuytg jgjjgj 
-                                jhjhgujygu hgiuiu vvvv gjuiuddfuwe fhgf
-                                dkfjhsdfh dgffdsgdfg.
+                            <p> {props.description}
                             </p>
                         </fieldset>
                         <fieldset>
                             <legend>Details</legend>
+                            <div className="review-symptomes">
+                              {
+                                  props.symptomes.map(symptome =>{
+                                      return <div className="symptomesshosen">{symptome}</div>
+                                  })
+                              }
+                              </div>
+                                <p>{props.therapy}</p>
+                                <p>{props.insurance}</p>
+                                <p>{props.age}</p>
+                                <p>{props.sexuality}</p>
                         </fieldset> 
                         <fieldset>
                             <legend>Preferences</legend>
+                                <p>{props.language}</p>
+                                <p>{props.ethnicity}</p>
+                                <p>{props.faith}</p>
+                                <p>{props.country}</p>
                         </fieldset>     
                         </div>
                     <div className="review-container-rigth">
                         <fieldset>
                                 <legend>Budget</legend>
+                                <p>{props.typeOfPayment}</p>
+                                From<input type="text"  value={`${'$ '} ${props.minPrice} `}disabled /> to
+                                <input type="text"  value={`${'$ '} ${props.maxPrice} `} disabled/>
                         </fieldset> 
                         <fieldset>
                                 <legend>Availability</legend>
+                               
+                                <div className="review-availability">
+                                <div className="review-availability-freq">
+                                    <p>{props.appointmentFrequency}</p>
+                                </div>
+                                <img src={`./image/${props.timeRequirement}.png`} alt={props.timeRequirement}></img>
+                                </div>                          
+                                From<input type="text"  value={props.availabilityFrom} disabled /> to
+                                <input type="text"  value={props.availabilityTo} disabled/>
+
+
                         </fieldset>  
                     </div>     
                 </div>
                 <div className="button-nav1">
-                            <button onClick= {()=>props.onBack("DESCRIPTION")}> {"<"} Back</button>
-                            <button onClick= {()=>props.onNext("PREFERENCES")}>Next {">"}</button>
+                            <button onClick= {()=>props.onBack("AVAILABILITY")}> {"<"} Back</button>
+                            <button onClick= {()=>props.onPost()}>Post</button>
                 </div>
             </div>
        </div>

@@ -5,7 +5,7 @@ import img from "../../images/Doubt.png"
 
 export default function ProblemDescription(props) {
 
-
+   
 
     return(
         <div className="post-description-container">
@@ -28,7 +28,7 @@ export default function ProblemDescription(props) {
                                 <div><img src ={img}  alt="description"/></div>
                         </div>
                         <div className="description">
-                            <textarea > </textarea>
+                            <textarea value={props.description} name= "description" onChange={props.handleChange}> </textarea>
                             <div className="button-nav">
                                 <button onClick={()=>props.onBack("LANDING")}> {"<"} Back</button>
                                 <button onClick={()=> props.onNext("DETAILS")}>Next {">"}</button>
