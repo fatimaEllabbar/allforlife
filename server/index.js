@@ -8,6 +8,8 @@ const cookieSession = require('cookie-session');
 
 // routes constants
 const users = require("./routes/users");
+const jobPost = require("./routes/jobPost");
+const jobProposal = require("./routes/jobProposals");
 
 
 //initializing middleware
@@ -33,7 +35,10 @@ app.use(cookieSession({
 }))
 
 //routes
-app.use("/api", users(db));
+
+//app.use("/api", users(db));
+app.use("/api/jobpost", jobPost(db));
+app.use("/api/jobproposals", jobProposal(db));
 
 
 

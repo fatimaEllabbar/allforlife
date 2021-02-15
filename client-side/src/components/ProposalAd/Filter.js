@@ -15,8 +15,8 @@ export default function Filter(props){
             </div>
             {props.list.map((item,index) => {
                 return (
-                    <span key={item.index} className={show ? "filter-hide":"filter-show"}> 
-                    <input key={item.index} name ={props.name} value={item} onChange={props.onChange} type="checkbox" />{item}</span> 
+                    <span key={index} className={show ? "filter-hide":"filter-show"}> 
+                    <input key={item} name ={props.name} value={item} onChange={props.onChange} type="checkbox" />{item}</span> 
                 )
             })}     
         </div>

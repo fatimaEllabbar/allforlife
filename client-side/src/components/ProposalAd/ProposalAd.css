@@ -35,7 +35,7 @@
 
 .proposalad-list-header-filter select{
     margin-right: 0;
-    margin-left: 20px;
+    margin-left: 2%;
     height: 30px;
     background-color: white;
     border: solid 1px rgb(218, 216, 216); 
@@ -164,4 +164,23 @@ display: flex;
 }
 .filter-hide{
     display: none;
+}
+
+/*Media Querie*/
+@media only screen and (max-width : 650px){
+  
+    .proposalad-list{
+        width: 90%;
+        margin-left: 1%;
+    }
+    .proposalad-filter{
+        margin-left: 15%;
+        margin-top: 10px;
+        width: 50%;
+    }
+    .proposalad-container{
+        flex-direction: column-reverse;
+    }
+ 
+    
 }
