@@ -1,24 +1,56 @@
 import React from "react";
+import { Link, useHistory } from "react-router-dom";
+import { FcHome } from "react-icons/fc"
 import "./Header.css";
-import logo from "../images/logo1.png";
 
 export default function Header(props) {
+  //local variable to use history method
+  let history = useHistory();
 
-    return <header className="header-container">  
-               
-                
-            </header>
+  const { user,setUser } = props;
+  const handleClick =(event) => {
+    event.preventDefault();
+    localStorage.setItem("token", "");
+    setUser(undefined);
+    history.push('/');
+  }
+
+    return (
+      <nav className="nav-container">
+          <div className="nav-div-image">
+            <Link to="/"><img src="/image/logo.png" alt="logo" /></Link>           
+          </div>
+          <div className="nav-links">
+            <div className="home-username"> Hi usename ! </div>
+
+         <div><span className="nav-link-id" onClick={(event) => handleClick(event)}>Logout</span></div>
+         <div><Link className="nav-link-id" to="/customer/dashboard">DashBoard</Link></div>
+             
+            
+
+         {/* {user && <div className="nav-links">
+            <span className="nav-link-id" onClick={(event) => handleClick(event)}>Logout</span>
+          </div>
+          }
+          { user && 
+            <div className="nav-links">
+              {user.type === 'customer' ?
+              <Link className="nav-link-id" to="/customer/dashboard">DashBoard</Link>:
+              <Link className="nav-link-id" to="/provider/dashboard">DashBoard</Link> }
+            </div>
+          }  */}
+          <div className ="home-icon">
+            <Link to="/">
+              <FcHome  style={{height:'2em', 
+                width:'2em', 
+                paddingBottom:'0.3em',
+                alignContent:'center'
+                }}
+              />
+            </Link>
+          </div>
+          </div>
+         
+      </nav>
+    );
 }
-
-
-/*  <div className="logo">
-                    <img src={logo} alt="allforlife" />
-                </div>
-                <nav className="nav-container">
-                    <p> Hi ! </p>
-                    <button>Login</button>
-                    <button>logout</button>
-                    <button>Register</button>
-                </nav>
-
-                */

@@ -9,17 +9,18 @@ import Login from "./costumer/Login"
 import Register from "./costumer/Register";
 import ProposalAd from "./ProposalAd";
 import ProposalForm from "./ProposalAd/ProposalForm";
+import CustomerProfile from"./CustomerProfile";
+import ProviderProfile from"./ProviderProfile";
+import Home from "./Home";
 
 
 function App() {
 
-const [user,setUser]= useState(null);
+const [user,setUser]= useState(true);
 
 
   return (
   <>
-   
-  
 
     <Router>
       <Header />
@@ -28,7 +29,8 @@ const [user,setUser]= useState(null);
           <ProposalForm />
         </Route>
         <Route path="/">
-          <ProposalAd  setUser={setUser}/>
+          {user && <Home  setUser={setUser}/>}
+          {!user && <Login />}
         </Route>
       
       </Switch>

@@ -14,12 +14,12 @@ export default function ProposalAd(props){
     //set the filter with an empty array.
     const[filter,setFilter] = useState([null,0,0,0,0,"DESC"]);
     const [jobesPostingData, setJobPostingData]= useState([]);
+    const[keyswords,setKeywords]=useState();
     
 
     // load the jobs posting from api witha specific filter
     useEffect(() => {
       axios.get(`http://localhost:8007/api/jobpost`,{ params :{filter:filter}}).then(res =>{
-        console.log(res.data);
         setJobPostingData(res.data);
       });      
   
@@ -116,6 +116,14 @@ export default function ProposalAd(props){
       setFilter([...newFilter]);
     } 
   
+    function handleClick(){
+
+   
+      console.log(jobesPostingData)
+        
+
+  }
+
 
     return(
         <>
@@ -128,6 +136,10 @@ export default function ProposalAd(props){
           </aside> 
         
           <section className="proposalad-list">
+             <div className="search-bar">
+               <input type="text"  name="search" value={keyswords} onChange={ (e)=>{setKeywords(e.target.value)}}/>
+               <button onClick={()=>handleClick()}> <i className="fa fa-search"></i></button>
+             </div>
               <div className="proposalad-list-header">
                   <div className="proposalad-list-header-counter">
                     <FaWifi style= { {color: "#f5c107", fontSize: "1.5em", transform: "rotate(45deg)"}}/> 
@@ -141,12 +153,13 @@ export default function ProposalAd(props){
                       </select>
                   </div>
                  </div> 
-
+                 <div className="proposalslist">
                  {jobesPostingData.map(job=>{
                    return(
                     <ProposalItem  key ={job.id} {...job}/>
                    )
                  })}
+                 </div> 
                  <div className="proposal-footer"></div>
           </section> 
         </section>  
