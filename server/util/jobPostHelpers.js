@@ -10,14 +10,14 @@ const createNewPost = (jobPostObj, db) => {
     }
   }
   console.log(jobPostObj, "jobbbbbbb");
-  const {customerId, appointmentFor, description, symptomes,symptomesId, insurance,  therapy, age, sexuality, language, ethnicity, faith, typeOfPayment, maxPrice, minPrice, appointmentFrequency, timeRequirement, availabilityFrom, availabilityTo } = jobPostObj;
+  const {customerId, title, appointmentFor, description, symptomes,symptomesId, insurance,  therapy, age, sexuality, language, ethnicity, faith, country, typeOfPayment, maxPrice, minPrice, appointmentFrequency, timeRequirement, availabilityFrom, availabilityTo, postcreationtimezone} = jobPostObj;
   //console.log(symptomes, "hello")
   
   return db.query(`
-  INSERT INTO job_postings (customer_id, appointmentFor, description, therapy, sexuality, age, language, ethnicity, faith, typeOfPayment, maxPrice, minPrice, appointmentFrequency, timeRequirement, availabilityFrom, availabilityTo, insurance)
-  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)
+  INSERT INTO job_postings (customer_id, title, appointmentFor, description, therapy, sexuality, age, language, ethnicity, faith, country, typeOfPayment, maxPrice, minPrice, appointmentFrequency, timeRequirement, availabilityFrom, availabilityTo, insurance,postCreationTimeZone)
+  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18,$19,$20)
   RETURNING id as job_posting_id;
-  `, [customerId, appointmentFor, description, therapy, sexuality, age, language, ethnicity, faith, typeOfPayment, maxPrice, minPrice, appointmentFrequency, timeRequirement, availabilityFrom, availabilityTo, insurance])
+  `, [customerId, title,appointmentFor, description, therapy, sexuality, age, language, ethnicity, faith, country, typeOfPayment, maxPrice, minPrice, appointmentFrequency, timeRequirement, availabilityFrom, availabilityTo, insurance,postcreationtimezone])
     .then(res => {
       const jobPostingId = res.rows[0].job_posting_id;
       //console.log(jobPostingId, "1st")
@@ -29,7 +29,7 @@ const createNewPost = (jobPostObj, db) => {
         `, [symptome])
           .then(res => {
             return res.rows[0];
-          })
+          }) 
           .catch(res => {
             return null;
           });
@@ -47,8 +47,6 @@ const getSymptomes = (db) => {
       return res.rows;
     });
 };
-
-
 //function to get sympotomes from the database for a specific ID
 const getSymptomesByID = (id, db) => {
   
@@ -60,8 +58,6 @@ const getSymptomesByID = (id, db) => {
       return res.rows;
     });
 };
-
-
 //function to get jobposting from the database for a specific ID
 const getJobsPostingByID = (id, db) => {
   return db.query(`
@@ -70,80 +66,71 @@ const getJobsPostingByID = (id, db) => {
   .then(res => {
     return res.rows;
   });
-
 }
 //get jobs posting with a specific options
 const getJobsPosting = (options, db) => {
-  
   const minPrice=parseInt(options[3]);
   const maxPrice=parseInt(options[4]);
   const minNumberOfProposals=parseInt(options[1]);
   const maxNumberOfProposals=parseInt(options[2]);
-
   const queryParams = [];
   let queryString ="";
   // check if number of proposals is included in the filter
   if(options[2] === "0"){
-    queryString = `SELECT * FROM job_postings `;
+  queryString = `SELECT * FROM job_postings WHERE is_accepted='false' `;
   } else{
-    queryString = `select job_postings.* ,count(*) from job_postings 
-    left join job_proposals on job_postings.id=job_posting_id `;
+  queryString = `select job_postings.* ,count(*) from job_postings 
+  left join job_proposals on job_postings.id=job_posting_id WHERE job_postings.is_accepted='false' `;
   }
-
-
-  if (options[0]!=="null" && options[0]!=="Fixed Price") {
-    queryParams.push(`${options[0]}`);
-    queryString += ` WHERE typeOfPayment LIKE $${queryParams.length} `;
+  if (options[0]!=="null") {
+  queryParams.push(`${options[0]}`);
+  queryString += ` and typeOfPayment LIKE $${queryParams.length} `;
   }
-  if (options[0]==="Fixed Price") {
-    queryString += ` WHERE typeOfPayment not LIKE 'Hourly' `;
+  if (options[4]!=="0") {
+  queryParams.push(minPrice);
+  queryParams.push(maxPrice);
+  queryString += ` and minPrice >= $${queryParams.length-1} and maxPrice <= $${queryParams.length} `;
+  }
+  // check if number of proposals is included in the filter
+  if(options[2] !== "0"){
+  queryParams.push(minNumberOfProposals);
+  queryParams.push(maxNumberOfProposals);
+  queryString += `group by job_postings.id 
+  HAVING count(*) >= $${queryParams.length-1} and count(*) <= $${queryParams.length}`;
+  }
+  if(options[5]==="DESC"){
+  queryString += ` 
+  ORDER BY created_at DESC`;
+  } else {
+  queryString += ` 
+  ORDER BY created_at`;
   }
   
-  if(queryParams.length < 1 && options[0]==="Fixed Price" &&  options[4]!=="0") {
-    queryString += ` and`;
-  }
-  if(queryParams.length < 1 && options[0]!=="Fixed Price" &&  options[4]!=="0") {
-    queryString += ` where`;
-  }
-  if(queryParams.length >= 1  && options[4]!=="0"){
-    queryString += ` and`;
-  }
-
-
-  if (options[4]!=="0") {
-    queryParams.push(minPrice);
-    queryParams.push(maxPrice);
-    queryString += `  minPrice >= $${queryParams.length-1}  and maxPrice <= $${queryParams.length} `;
-  }
-
- // check if number of proposals is included in the filter
-  if(options[2] !== "0"){
-    queryParams.push(minNumberOfProposals);
-    queryParams.push(maxNumberOfProposals);
-    queryString += `group by job_postings.id 
-     HAVING count(*) >= $${queryParams.length-1} and  count(*) <= $${queryParams.length}`;
-  }
-
-  if(options[5]==="DESC"){
-    queryString += ` 
-      ORDER BY  created_at DESC`;
-  } else {
-    queryString += ` 
-      ORDER BY  created_at`;
-  }
-
-  console.log(queryString, queryParams);
   return db.query(queryString,queryParams)
+  .then(res => {
+  return res.rows;
+  });
+  }
+//function to get jobposting from the database for a specific customer ID
+const getJobsPostingByCustomerID = (id, db) => {
+  return db.query(`
+  SELECT * FROM job_postings WHERE customer_id = $1 ORDER BY created_at DESC`, [id])
   .then(res => {
     return res.rows;
   });
 }
 
+//function to change is_accepted to true on accepting the deal
+const dealAccept = (id, db) => {
+  return db.query(`UPDATE job_postings  SET is_accepted = true WHERE id = $1`,[id])
+}
 
 module.exports = {
   createNewPost,
   getSymptomes,
-  getJobsPosting,
   getSymptomesByID,
-  getJobsPostingByID
+  getJobsPostingByID,
+  getJobsPosting,
+  getJobsPostingByCustomerID,
+  dealAccept
 };
