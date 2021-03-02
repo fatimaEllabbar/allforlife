@@ -30,22 +30,28 @@ Technologies: REACT, NODE, EXPRESS, AXIOS, JWT, POSTGRESS. SOCKET...
 
 
 - Customer Dashboard :
+
 !["Screenshot of Customer Dashboard"](https://github.com/fatimaEllabbar/allforlife/blob/master/client-side/public/docs/customerDashboard.gif)
 
 - Customer Job post :
+
 !["Screenshot of Customer Job Post"](https://github.com/fatimaEllabbar/allforlife/blob/master/client-side/public/docs/postAd.gif)
 
 - Provider Dashboard :
+
 !["Screenshot of Provider Dashboard"](https://github.com/fatimaEllabbar/allforlife/blob/master/client-side/public/docs/ProviderDashbord.gif)
 
 - Provider Proposal Ad :
+
 !["Screenshot of Provider Proposal Ad"](https://github.com/fatimaEllabbar/allforlife/blob/master/client-side/public/docs/ProposalAd.gif)
 
 
 - Customer see Proposals :
+
 !["Screenshot of  customer see Proposals "](https://github.com/fatimaEllabbar/allforlife/blob/master/client-side/public/docs/seetheProposal.gif)
 
 - Customer and Provider Chat room :seetheProposal
+
 !["Screenshot of  Customer and Provider Chat room "](https://github.com/fatimaEllabbar/allforlife/blob/master/client-side/public/docs/chat.gif)
 
 
