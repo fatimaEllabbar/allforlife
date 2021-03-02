@@ -26,7 +26,7 @@ Technologies: REACT, NODE, EXPRESS, AXIOS, JWT, POSTGRESS. SOCKET...
 
 - Landing Page:
 
-!["Screenshot of landing Page"]()
+!["Screenshot of landing Page"](https://github.com/fatimaEllabbar/allforlife/blob/master/client-side/public/docs/landing1.gif)
 
 
 - 
