@@ -1,5 +1,5 @@
 # Allforlife
-Alfalfa is a marketplace that gathers people how seek help with mental health problems and practitioners how can provide help.
+Allforlife is a marketplace that gathers people how seek help with mental health problems and practitioners how can provide help.
 
 ###### Technical Specifications
 Technologies: REACT, NODE, EXPRESS, AXIOS, JWT, POSTGRESS. SOCKET... 

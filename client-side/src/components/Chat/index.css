@@ -1,0 +1,108 @@
+.chat-container{
+  display: flex;
+  flex-direction: column;
+  padding:20px;
+}
+
+.container {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.darker {
+  border-color: #ccc;
+  background-color: #ddd;
+}
+
+.container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.container img {
+  float: left;
+  max-width: 60px;
+  width: 100%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.container img.right {
+  float: right;
+  margin-left: 20px;
+  margin-right:0;
+}
+
+
+.time-right {
+  float: right;
+  color: #aaa;
+}
+
+.time-left {
+  float: left;
+  color: #999;
+}
+
+/*add this code*/
+
+.chat-container{
+  background-color: white;
+
+}
+.chat-header{
+  
+  width: 100%;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-align: center;
+  height: 25px;
+  background-color:#4b5779;
+  border: 1px solid #4b5779;
+}
+
+.chat-card{
+  margin-top: 50px;
+  margin-left: 25%;
+  margin-bottom: 20px;
+  border: 1px solid #4b5779;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  min-height: 520px;
+}
+
+.card-form{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+ 
+}
+.card-form .textfield{
+  width: 60%;
+  border: 1px solid #4b5779;
+}
+.card-form button{
+  background-color:  #4b5779;
+  border: solid 2px #4b5779;
+  color:white;
+  font-size: 1rem;
+  width: 30%;
+}
+@media screen and (max-width: 950px) {
+  .chat-card{
+    margin-left: 15%;
+    width: 70%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .chat-card{
+    margin-left: 5%;
+    width: 70%;
+  }
+}
